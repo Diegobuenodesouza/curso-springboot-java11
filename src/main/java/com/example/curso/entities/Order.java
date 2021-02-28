@@ -102,6 +102,14 @@ public class Order implements Serializable {
 			this.orderStatus = orderStatus.getCode();
 		}		
 	}
+	
+	public Double getTotal() {
+		double sum = 0.0;
+		for (OrderItem orderItem : items) {
+			sum += orderItem.getSubTotal();
+		}
+		return sum;
+	}
 
 	@Override
 	public int hashCode() {
@@ -127,5 +135,7 @@ public class Order implements Serializable {
 			return false;
 		return true;
 	}
+	
+	
 
 }
